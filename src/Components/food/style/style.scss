@@ -63,7 +63,6 @@ img{
 }
 
 .productItem{
-    width: 20%;
     padding: 0 20px;
 }
 
@@ -80,4 +79,41 @@ img{
 }
 .mgbt20{
     margin-bottom: 20px;
+}
+
+.contentTitle{
+    position: relative;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 60px 0px 20px 0;
+   
+}
+
+.contentTitle:before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 60px;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    margin: auto;
+    left: calc(50% - 30px);
+    bottom: -2px;
+}
+
+.bestproduct{
+    overflow: hidden;
+    width: 85%;
+
+    margin: 0 auto;
+}
+.productInfo{
+    float: left;
+    width: 20%;
+}
+.imgpr{
+    height: 190px;
+    object-fit: contain;
+    width: 100%;
 }

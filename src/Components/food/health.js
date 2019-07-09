@@ -1,13 +1,48 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
+import './style/style.scss'
 
-function Beauty() {
-    return (<div style={{ margin: '0 auto' }} >
-        <div style={{ background: 'rgb(14, 18, 57)' }} >
-            <img className='nav-img' src='https://www.niamall.com/static/images/niamall/langding/health/health.png' alt='beauty'></img>
-        </div>
-    </div>
-    );
+export default class TableUser extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            test: '',
+            da: []
+        };
+    }
+    componentDidMount() {
+        axios
+            .get('https://www.niamall.com/api/landing-pages/fetch/food')
+            .then(({ data }) => {
+                this.setState({
+                    test: data.BestSellers.title,
+                    da: data.BestSellers.products
+                });
+            })
+            .catch((err) => { })
+    }
+
+    render() {
+        const child = this.state.da.map((item, index) => {
+            return <div className='productInfo' key={index}>
+                <div className='productItem'>
+                    <a href="#">
+                        <div className='wrapper-img mgbt20'> 
+                           <img className='imgpr' src={item.thumbnail}></img>
+                        </div>
+                    </a>
+                    <div className='price-tag'> {item.price} </div>
+                    <div className='mgbt20'><a href="#"><span className='product-name'> {item.name}</span></a></div>
+                    <div className='wrapper-addtocard'>
+                        <button className='addtocard btn capitalize'>Add to card</button>
+                    </div>
+                </div>
+            </div>
+
+        });
+        return <div>
+            <div className='contentTitle'>{this.state.test}</div>
+           <div className='bestproduct'> {child} </div>
+        </div>;
+    }
 }
-
-export default Beauty

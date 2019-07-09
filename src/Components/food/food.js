@@ -1,6 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './style/style.scss'
+import axios from 'axios';
+import TableUser from './health'
+
+
+
+
 
 const Item = function (props) {
     return (
@@ -70,14 +76,15 @@ class Food extends React.Component {
                 }
             </div>
 
-            <h3 className='capitalize h3center'>best sellers</h3>
+           {/* <h3 className='capitalize h3center'>best sellers</h3>
             <div class='wrapper-best-seller'>
                 <div className='best-sellers'>
                     {
                         this.bestseller.map((item, index) => <Ltem key={index} img={item.img} price={item.price} name={item.name} />)
                     }
                 </div>
-            </div>
+                </div> */}
+                <TableUser/>
         </div>
         );
     }
